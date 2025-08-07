@@ -1,0 +1,3 @@
+"""
+Console test package
+"""

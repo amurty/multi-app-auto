@@ -1,0 +1,3 @@
+"""
+Console/Web automation module
+"""
