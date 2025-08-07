@@ -25,15 +25,15 @@ class TestConnectorCreation:
                 # Navigate to the URL
                 await page.goto("https://release.bnntest.com/")
                 
-                # Enter organization name
-                await page.fill('input[name="orgName"]', "qa-rel-global-ent")
-                await page.click('button[type="submit"]')
+                # Enter organization name - using the actual input field from the UI
+                await page.fill('input[placeholder="Org Name"]', "qa-rel-global-ent")
+                await page.click('button:has-text("CONTINUE")')
                 
                 # Wait for login page and enter credentials
-                await page.wait_for_selector('input[type="email"]')
-                await page.fill('input[type="email"]', "ashwini.murty@banyansecurity.io")
-                await page.fill('input[type="password"]', "Test123!")
-                await page.click('button[type="submit"]')
+                await page.wait_for_selector('input[placeholder="Email Address"]')
+                await page.fill('input[placeholder="Email Address"]', "ashwini.murty@banyansecurity.io")
+                await page.fill('input[placeholder="Password"]', "Test123!")
+                await page.click('button:has-text("LOGIN")')
                 
                 # Wait for dashboard to load
                 await page.wait_for_load_state('networkidle')
@@ -140,12 +140,12 @@ class TestConnectorCreation:
     async def _login_to_console(self, page):
         """Helper method to login to the console"""
         await page.goto("https://release.bnntest.com/")
-        await page.fill('input[name="orgName"]', "qa-rel-global-ent")
-        await page.click('button[type="submit"]')
-        await page.wait_for_selector('input[type="email"]')
-        await page.fill('input[type="email"]', "ashwini.murty@banyansecurity.io")
-        await page.fill('input[type="password"]', "Test123!")
-        await page.click('button[type="submit"]')
+        await page.fill('input[placeholder="Org Name"]', "qa-rel-global-ent")
+        await page.click('button:has-text("CONTINUE")')
+        await page.wait_for_selector('input[placeholder="Email Address"]')
+        await page.fill('input[placeholder="Email Address"]', "ashwini.murty@banyansecurity.io")
+        await page.fill('input[placeholder="Password"]', "Test123!")
+        await page.click('button:has-text("LOGIN")')
         await page.wait_for_load_state('networkidle')
     
     async def _navigate_to_connector_creation(self, page):
